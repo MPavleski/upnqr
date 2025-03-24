@@ -7,9 +7,9 @@ from pydantic.dataclasses import dataclass
 from qrcodegen import QrSegment, QrCode
 
 ENCODING = "ISO-8859-2"
-PATTERN_KODA_NAMENA = re.compile("^[A-Z]{4}$")
-PATTERN_IBAN = re.compile("^[A-Z]{2}\d{2}(\d{4}){3}\d{3}$") # Not really IBAN, but good enough
-PATTERN_REFERENCA = re.compile("^[A-Z]{2}[0-9]{2}[A-Z0-9-]{0,22}$")
+PATTERN_KODA_NAMENA = re.compile(r'^[A-Z]{4}$')
+PATTERN_IBAN = re.compile(r'^[A-Z]{2}\d{2}(\d{4}){3}\d{3}$') # Not really IBAN, but good enough
+PATTERN_REFERENCA = re.compile(r'^[A-Z]{2}[0-9]{2}[A-Z0-9-]{0,22}$')
 
 def _constrain_length(field, maxLength):
     """Validator: ensures that the string does not exceed the given length."""
@@ -125,7 +125,7 @@ def transform(qr, fn, border=0):
     """Transforms a QR object to a list. Each element in the list represents one line of
     the QR code, and is itself a list of elements representing the modules (pixels) within
     the line. Each element is formed by calling the given transformation function.
-    
+
         qr: The code to transform.
         fn: The transformation function with a signature fn(x, y, value). x and y are the
             coordinates of the module, and value is a boolean: True for black, False for
