@@ -1,19 +1,21 @@
 [build-system]
-requires = ["poetry-core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
 
-[tool.poetry]
+[project]
 name = "upnqr"
 version = "0.1.0"
 description = "A module for generating UPN QR codes."
-authors = ["shrx <differenxe@gmail.com>"]
-license = "GPL3"
+authors = [
+    {name = "shrx", email = "differenxe@gmail.com"}
+]
+license = {text = "GPL3"}
+requires-python = ">=3.7"
+dependencies = [
+    "pydantic",
+    "qrcodegen",
+    "Pillow",
+]
 
-[tool.poetry.dependencies]
-python = "^3.7"
-pydantic = "*"
-qrcodegen = "*"
-Pillow = "*"
-
-[tool.poetry.dev-dependencies]
-# Add any development dependencies here
+[project.urls]
+"Homepage" = "https://github.com/shrx/upnqr"
