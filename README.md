@@ -42,7 +42,8 @@ pip install -r requirements.txt
 To use the `upnqr` module, you can import the necessary classes and functions from the module. Here is a simple example:
 
 ```python
-from upnqr.upnqr import Data, Placnik, Prejemnik
+from upnqr import to_pil, make_from_data, Data, Placnik, Prejemnik
+import datetime
 
 # Create instances of Placnik and Prejemnik
 placnik = Placnik(ime="Janez Novak", ulica="Glavna 1", kraj="Ljubljana")
@@ -56,11 +57,12 @@ data = Data(
     koda_namena="TEST",
     namen_placila="Plačilo za storitve",
     rok_placila=datetime.date(2023, 12, 31),
-    referenca="REF123456"
+    referenca="SI00123456"
 )
 
 # Generate QR code
-qr_code = make_from_data(data)
+qr = make_from_data(data)
+to_pil(qr).save('out.png')
 ```
 
 ## License
